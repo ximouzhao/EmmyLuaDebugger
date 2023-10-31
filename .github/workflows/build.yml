@@ -45,7 +45,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        if [[ "${{ matrix.platform }}" = linux-arm ]]; then
+        if [[ "${{ matrix.platform }}" = linux-arm64 ]]; then
           export CC=arm-linux-gnueabi-gcc
           export CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=neon"
         fi
