@@ -45,6 +45,10 @@ jobs:
       run: |
         mkdir build
         cd build
+        if [[ "${{ matrix.platform }}" = linux-arm ]]; then
+          export CC=arm-linux-gnueabi-gcc
+          export CFLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=neon"
+        fi
         cmake .. -DCMAKE_BUILD_TYPE=Release -DEMMY_CORE_VERSION=${{env.TAG}}
         cmake --build . --config Release
         cmake --install . --config Release --prefix ${{ github.workspace }}/artifact/
